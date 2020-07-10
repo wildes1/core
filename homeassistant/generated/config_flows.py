@@ -192,6 +192,7 @@ FLOWS = [
     "twilio",
     "unifi",
     "upb",
+    "upcloud",
     "upnp",
     "velbus",
     "vera",
