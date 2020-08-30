@@ -24,6 +24,7 @@ from homeassistant.helpers.entity_registry import (
     RegistryEntry,
     async_get_registry as async_get_entity_registry,
 )
+
 from .common import MQTTMessage, setup_ozw
 
 from tests.async_mock import AsyncMock, patch
