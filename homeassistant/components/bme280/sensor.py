@@ -30,6 +30,7 @@ CONF_OPERATION_MODE = "operation_mode"
 CONF_T_STANDBY = "time_standby"
 CONF_FILTER_MODE = "filter_mode"
 CONF_DELTA_TEMP = "delta_temperature"
+CONF_DELTA_HUM = "delta_humidity"
 
 DEFAULT_NAME = "BME280 Sensor"
 DEFAULT_I2C_ADDRESS = "0x76"
@@ -41,6 +42,7 @@ DEFAULT_OPERATION_MODE = 3  # Normal mode (forced mode: 2)
 DEFAULT_T_STANDBY = 5  # Tstandby 5ms
 DEFAULT_FILTER_MODE = 0  # Filter off
 DEFAULT_DELTA_TEMP = 0.0
+DEFAULT_DELTA_HUM = 0.0
 
 MIN_TIME_BETWEEN_UPDATES = timedelta(seconds=3)
 
@@ -77,6 +79,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
         vol.Optional(CONF_T_STANDBY, default=DEFAULT_T_STANDBY): vol.Coerce(int),
         vol.Optional(CONF_FILTER_MODE, default=DEFAULT_FILTER_MODE): vol.Coerce(int),
         vol.Optional(CONF_DELTA_TEMP, default=DEFAULT_DELTA_TEMP): vol.Coerce(float),
+        vol.Optional(CONF_DELTA_HUM, default=DEFAULT_DELTA_HUM): vol.Coerce(float),
     }
 )
 
@@ -101,6 +104,7 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
             t_sb=config[CONF_T_STANDBY],
             filter_mode=config[CONF_FILTER_MODE],
             delta_temp=config[CONF_DELTA_TEMP],
+            delta_hum=config[CONF_DELTA_HUM],
             logger=_LOGGER,
         )
     )
