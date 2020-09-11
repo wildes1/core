@@ -104,7 +104,6 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
             t_sb=config[CONF_T_STANDBY],
             filter_mode=config[CONF_FILTER_MODE],
             delta_temp=config[CONF_DELTA_TEMP],
-            delta_hum=config[CONF_DELTA_HUM],
             logger=_LOGGER,
         )
     )
@@ -178,7 +177,7 @@ class BME280Sensor(Entity):
                     temperature = round(celsius_to_fahrenheit(temperature), 1)
                 self._state = temperature
             elif self.type == SENSOR_HUMID:
-                self._state = round(self.bme280_client.sensor.humidity, 1)
+                self._state = round(self.bme280_client.sensor.humidity, 1) + CONF_DELTA_HUM
             elif self.type == SENSOR_PRESS:
                 self._state = round(self.bme280_client.sensor.pressure, 1)
         else:
