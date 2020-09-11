@@ -177,7 +177,7 @@ class BME280Sensor(Entity):
                     temperature = round(celsius_to_fahrenheit(temperature), 1)
                 self._state = temperature
             elif self.type == SENSOR_HUMID:
-                self._state = round(self.bme280_client.sensor.humidity, 1) + CONF_DELTA_HUM
+                self._state = round(self.bme280_client.sensor.humidity - 2.5, 1)
             elif self.type == SENSOR_PRESS:
                 self._state = round(self.bme280_client.sensor.pressure, 1)
         else:
